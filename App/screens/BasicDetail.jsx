@@ -10,13 +10,24 @@ import { useNavigation } from '@react-navigation/native';
 import ShowText from '../components/Shared/Text';
 import DetailsHeader from '../components/Shared/DetailsHeader';
 import BookCard from '../components/Shared/BookCard';
+import { usePlayer } from '../contexts/PlayerContext';
 
 const BasicDetail = () => {
   const Navigate = useNavigation();
+  const { playTrack } = usePlayer();
 
+  //
+  const playKalimba = () => {
+    playTrack({
+      id: 'kalimba',
+      title: 'Kalimba Sample',
+      artist: 'This is the artist',
+      coverImage: 'https://covers.openlibrary.org/b/id/8370661-L.jpg',
+      url: 'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+    });
+  };
   const handleBookPress = () => {
     console.log('Navigate to Book Details');
-    // Add your navigation logic here
   };
   return (
     <>
@@ -48,6 +59,7 @@ const BasicDetail = () => {
             type="icon-left"
             label="Play Audio"
             style={style.Button}
+            onPress={playKalimba}
           />
         </View>
 

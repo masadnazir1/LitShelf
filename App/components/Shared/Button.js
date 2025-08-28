@@ -2,6 +2,7 @@ import React from 'react';
 import { TouchableOpacity, Text, View, StyleSheet } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import colorTheme from '../../Theme/Colors';
+import spacing from '../../Theme/Spacing';
 
 const Button = ({
   label = '',
@@ -12,11 +13,19 @@ const Button = ({
   onPress,
   style = {},
   iconSize = 18,
+  paddingVertical = spacing.md,
   iconColor,
   colorType = 'primary', // primary | danger | success | warning | info
   align = 'center', // NEW: left | center | right
 }) => {
-  const styles = getStyles({ variant, type, disabled, colorType, align });
+  const styles = getStyles({
+    variant,
+    type,
+    disabled,
+    colorType,
+    align,
+    paddingVertical,
+  });
 
   const renderContent = () => {
     const iconElement = icon ? (
@@ -66,7 +75,14 @@ const Button = ({
 
 export default Button;
 
-const getStyles = ({ variant, type, disabled, colorType, align }) => {
+const getStyles = ({
+  variant,
+  type,
+  disabled,
+  colorType,
+  align,
+  paddingVertical,
+}) => {
   const theme = colorTheme;
 
   const baseColors = {
@@ -90,7 +106,7 @@ const getStyles = ({ variant, type, disabled, colorType, align }) => {
 
   const common = {
     button: {
-      paddingVertical: 16,
+      paddingVertical,
       paddingHorizontal: type === 'icon-only' ? 10 : 16,
       borderRadius: 8,
       flexDirection: 'row',
