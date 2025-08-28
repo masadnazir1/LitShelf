@@ -12,15 +12,6 @@ const GlobalPlayer = () => {
   const { current, isPlaying, position, duration, togglePlay, ClosePlayer } =
     usePlayer();
 
-  console.log('🎵 GlobalPlayer rendered');
-  console.log('Current Track:', current);
-  console.log('Is Playing:', isPlaying);
-  console.log('Position:', position, '/', duration);
-
-  if (!current) {
-    console.log('❌ No current track → GlobalPlayer hidden');
-    return null;
-  }
   if (!current) return null;
 
   const progress = duration > 0 ? clamp(position / duration, 0, 1) : 0;
