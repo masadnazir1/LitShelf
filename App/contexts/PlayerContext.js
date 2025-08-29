@@ -77,17 +77,25 @@ export const PlayerProvider = ({ children }) => {
   };
 
   const playTrack = async track => {
-    let idx = queue.findIndex(t => t.id === track.id);
+    try {
+      // Stop any current audio before playing new
+      service.stop();
+      setIsPlaying(false);
 
-    // if not in queue, add it
-    if (idx < 0) {
-      const newQueue = [...queue, track];
-      setQueueState(newQueue);
-      idx = newQueue.length - 1;
+      let idx = queue.findIndex(t => t.id === track.id);
+
+      // if not in queue, add it
+      if (idx < 0) {
+        const newQueue = [...queue, track];
+        setQueueState(newQueue);
+        idx = newQueue.length - 1;
+      }
+
+      setCurrentIndex(idx);
+      await loadAndPlay(track);
+    } catch (err) {
+      console.log('Error playing track:', err);
     }
-
-    setCurrentIndex(idx);
-    await loadAndPlay(track);
   };
 
   const play = () => {

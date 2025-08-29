@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet } from 'react-native';
 import colorTheme from '../Theme/Colors';
 import spacing from '../Theme/Spacing';
 import { IconNames } from '../Theme';
@@ -11,20 +11,16 @@ const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
 const GlobalPlayer = () => {
   const { current, isPlaying, position, duration, togglePlay, ClosePlayer } =
     usePlayer();
+  //
 
   if (!current) return null;
-
   const progress = duration > 0 ? clamp(position / duration, 0, 1) : 0;
 
   return (
     <View style={styles.wrapper}>
-      {/* progress bar */}
-
       <View style={styles.progressContainer}>
-        {/* Default Background Bar */}
         <View style={styles.progressBackground} />
 
-        {/* Foreground Progress Bar */}
         <View
           style={[styles.progressForeground, { width: `${progress * 100}%` }]}
         />
@@ -69,6 +65,7 @@ const GlobalPlayer = () => {
             iconSize={spacing.xl}
             variant="ghost"
             paddingVertical={spacing.xs}
+            height
           />
         </View>
       </View>
@@ -80,11 +77,13 @@ export default GlobalPlayer;
 
 const styles = StyleSheet.create({
   progressContainer: {
-    height: spacing.sm,
+    height: spacing.xs,
     width: '100%',
     backgroundColor: 'transparent', // container is just a holder
     position: 'relative',
     overflow: 'hidden',
+    alignContent: 'center',
+    justifyContent: 'center',
   },
   progressBackground: {
     position: 'absolute',
@@ -100,7 +99,7 @@ const styles = StyleSheet.create({
   wrapper: {
     position: 'absolute',
     width: '100%',
-    bottom: 65,
+    bottom: 60,
     backgroundColor: colorTheme.blackAndWhite.white,
   },
   progress: {
@@ -110,7 +109,7 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: spacing.md,
+    paddingHorizontal: spacing.sm,
   },
   art: {
     width: 44,

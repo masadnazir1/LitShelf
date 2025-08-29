@@ -1,7 +1,7 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import BottomTabs from './BottomTabs';
-
+import ReadMore from '../screens/ReadMore';
 import LoginScreen from '../screens/LoginScreen';
 import SignUpScreen from '../screens/SignUpScreen';
 import EmailConfirm from '../screens/EmailConfirm';
@@ -13,6 +13,7 @@ import Congratulation from '../screens/Congratulation';
 import ErrorPage from '../screens/ErrorPage';
 import BasicDetail from '../screens/BasicDetail';
 import SplashScreen from '../screens/SplashScreen';
+import Settings from '../screens/Settings';
 
 const Stack = createNativeStackNavigator();
 
@@ -33,7 +34,8 @@ const AppNavigator = () => {
       <Stack.Screen name="Congratulation" component={Congratulation} />
       <Stack.Screen name="ErrorPage" component={ErrorPage} />
       <Stack.Screen name="BasicDetail" component={BasicDetail} />
-
+      <Stack.Screen name="ReadMore" component={ReadMore} />
+      <Stack.Screen name="Settings" component={Settings} />
       <Stack.Screen name="Main" component={BottomTabs} />
     </Stack.Navigator>
   );

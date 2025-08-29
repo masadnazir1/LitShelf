@@ -30,7 +30,7 @@ const Container = ({
       style={[
         styles.container,
         {
-          padding,
+          paddingHorizontal: padding,
           backgroundColor: backgroundImage ? 'transparent' : backgroundColor,
         },
         style,

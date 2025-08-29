@@ -16,7 +16,7 @@ const LoginScreen = () => {
   const Navigate = useNavigation();
 
   const NavigateToWelcome = () => {
-    Navigate.navigate('Welcome');
+    Navigate.navigate('Main');
   };
   return (
     <>
@@ -74,19 +74,18 @@ const LoginScreen = () => {
         <View
           style={{
             display: 'flex',
-            flexDirection: 'row-reverse',
+            flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'center',
-            gap: 5,
+            width: '100%',
           }}
         >
+          <Text color={colorTheme.neutral[400]}>Don't have account?</Text>
           <LinkButton
             label="Register"
             color={colorTheme.accent[400]}
             onPress={() => Navigate.navigate('SignUp')}
           />
-
-          <Text color={colorTheme.neutral[400]}>Dont't have as account?</Text>
         </View>
       </Container>
     </>

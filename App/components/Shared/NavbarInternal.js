@@ -4,8 +4,10 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import colorTheme from '../../Theme/Colors';
 import typography from '../../Theme/Typography';
 import spacing from '../../Theme/Spacing';
+import { useNavigation } from '@react-navigation/native';
 
 const NavbarInternal = ({ onSettingsPress }) => {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <View style={styles.logoContainer}>
@@ -23,7 +25,7 @@ const NavbarInternal = ({ onSettingsPress }) => {
       </View>
 
       {/* Settings Icon */}
-      <TouchableOpacity onPress={onSettingsPress}>
+      <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
         <Ionicons
           name="settings-outline"
           size={24}
